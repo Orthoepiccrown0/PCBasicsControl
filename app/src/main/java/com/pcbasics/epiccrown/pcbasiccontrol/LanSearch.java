@@ -56,6 +56,8 @@ public class LanSearch extends AppCompatActivity {
                     Intent intent = new Intent(LanSearch.this,Control.class);
                     intent.putExtra("ip",user_ip);
                     startActivity(intent);
+                }else if(msg.arg1==3){
+                    Toast.makeText(LanSearch.this,"Cannoc connect to this host",Toast.LENGTH_LONG).show();
                 }
             }
         };
@@ -85,6 +87,8 @@ public class LanSearch extends AppCompatActivity {
         Toast.makeText(this,"Refreshing...",Toast.LENGTH_SHORT).show();
         final WifiManager wm = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         list.clear();
+        ListView listView = findViewById(R.id.lan_list);
+        listView.setAdapter(null);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -154,6 +158,10 @@ public class LanSearch extends AppCompatActivity {
                                 user_ip = input.getText().toString();
                                 Message msg = Message.obtain();
                                 msg.arg1 = 2;
+                                handler.sendMessage(msg);
+                            }else{
+                                Message msg = Message.obtain();
+                                msg.arg1 = 3;
                                 handler.sendMessage(msg);
                             }
                         }catch (Exception ex){

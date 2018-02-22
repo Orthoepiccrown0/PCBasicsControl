@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#C63D0F</color>
-    <color name="colorPrimaryDark">#b2360d</color>
-    <color name="colorAccent">#b2360d</color>
-    <color name="color_connection_button">#5e4b4b</color>
+    <color name="colorPrimary">#3b5998</color>
+    <color name="colorPrimaryDark">#355088</color>
+    <color name="colorAccent">#3b5998</color>
+    <color name="color_connection_button">#666666</color>
+    <color name="facebook_color">#3b5998</color>
+    <color name="green">#8ec127</color>
 
 </resources>
