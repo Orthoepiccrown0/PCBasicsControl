@@ -97,6 +97,8 @@ public class LanSearch extends AppCompatActivity {
                 fav_list.add(cursor.getString(0));
             publishFavoriteIPs();
         }else{
+            ListView favs = findViewById(R.id.favorites);
+            favs.setAdapter(null);
             TextView text = findViewById(R.id.favs_text);
             text.setVisibility(View.INVISIBLE);
         }
@@ -145,6 +147,7 @@ public class LanSearch extends AppCompatActivity {
                      cursor = db.query("IP_FAVOURITE",new String[]{"IP"},"IP=?",new String[]{selectedIP},null,null,null);
                     if(cursor.moveToFirst()){
                         String query ="DELETE from IP_FAVOURITE WHERE IP='"+selectedIP+"'";
+                        db.execSQL(query);
                     }
                     break;
             }
@@ -155,10 +158,10 @@ public class LanSearch extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("IP Address");
 
-        final EditText input = new EditText(this);
+
+        final EditText input =(EditText) LayoutInflater.from(this).inflate(R.layout.ipinsert,null);
         input.setText(fav);
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
-
         builder.setView(input);
 
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
@@ -275,7 +278,7 @@ public class LanSearch extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("IP Address");
 
-        final EditText input = new EditText(this);
+        final EditText input =(EditText) LayoutInflater.from(this).inflate(R.layout.ipinsert,null);
 
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
 
@@ -289,20 +292,17 @@ public class LanSearch extends AppCompatActivity {
                     public void run() {
                         try {
                             InetAddress address = InetAddress.getByName(input.getText().toString());
-                            /*if(address.isReachable(500)) {
-                                user_ip = input.getText().toString();
+
+                            user_ip = input.getText().toString();
+                            if(validIP(user_ip)) {
                                 Message msg = Message.obtain();
                                 msg.arg1 = 2;
                                 handler.sendMessage(msg);
                             }else{
                                 Message msg = Message.obtain();
-                                msg.arg1 = 3;
+                                msg.arg1 = 4;
                                 handler.sendMessage(msg);
-                            }*/
-                            user_ip = input.getText().toString();
-                            Message msg = Message.obtain();
-                            msg.arg1 = 2;
-                            handler.sendMessage(msg);
+                            }
                         }catch (Exception ex){
                             ex.printStackTrace();}
                     }
