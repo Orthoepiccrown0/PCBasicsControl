@@ -5,4 +5,7 @@
         android:icon="@drawable/refresh"
         android:title="Refresh"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/backto_home"
+        android:title="Back homescreen" />
 </menu>

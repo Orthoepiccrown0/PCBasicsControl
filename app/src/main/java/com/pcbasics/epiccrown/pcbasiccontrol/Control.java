@@ -52,23 +52,11 @@ public class Control extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control);
         user_ip = getIntent().getStringExtra("ip");
+        if(!user_ip.equals(""))
+            DataHelper.Preferences.setLastIp(this,user_ip);
         tryConnect();
 
-        /*ImageButton down = findViewById(R.id.downVol);
-        down.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                return false;
-            }
-        });
 
-        ImageButton up = findViewById(R.id.up);
-        up.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                return false;
-            }
-        });*/
     }
 
     private void tryConnect() {
@@ -183,6 +171,19 @@ public class Control extends AppCompatActivity {
         }).start();
         else{
             Toast.makeText(Control.this,"Server cannot respond",Toast.LENGTH_LONG).show();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        user_ip = DataHelper.Preferences.getLastIp(Control.this);
+                        clientSocket = new Socket(user_ip, 38745);
+                        outToServer = new DataOutputStream(clientSocket.getOutputStream());
+                        outToServer.writeUTF("Connected");
+                        outToServer.writeUTF(command);
+                    }catch (Exception ex){ex.printStackTrace();
+                    }
+                }
+            }).start();
         }
     }
 

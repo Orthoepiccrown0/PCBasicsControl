@@ -100,7 +100,7 @@ public class LanSearch extends AppCompatActivity {
             ListView favs = findViewById(R.id.favorites);
             favs.setAdapter(null);
             TextView text = findViewById(R.id.favs_text);
-            text.setVisibility(View.INVISIBLE);
+            text.setVisibility(View.GONE);
         }
     }
 
@@ -207,6 +207,11 @@ public class LanSearch extends AppCompatActivity {
             case R.id.refresh:
                 refresh();
                 return true;
+            case R.id.backto_home:
+                DataHelper.Preferences.setSkipHome(this,false);
+                Intent intent = new Intent(this,PC_Connection.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);
         }

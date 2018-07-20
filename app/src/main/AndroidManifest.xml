@@ -12,18 +12,26 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:screenOrientation="portrait"
+
         android:theme="@style/AppTheme">
-        <activity android:name=".PC_Connection">
+        <activity
+            android:name=".PC_Connection"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LanSearch" />
-        <activity android:name=".InternetConnection" />
-        <activity android:name=".Control"></activity>
+        <activity
+            android:name=".LanSearch"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InternetConnection"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Control"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

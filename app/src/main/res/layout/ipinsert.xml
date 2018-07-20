@@ -4,9 +4,9 @@
         android:id="@+id/input_ip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="IP Address"
-        android:inputType="textPersonName" />
+        android:hint="Insert server's address"
+        android:inputType="number" />

@@ -1,5 +1,6 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -59,21 +60,22 @@
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="@+id/LAN_Button"
         app:layout_constraintStart_toStartOf="@+id/LAN_Button"
-        app:layout_constraintTop_toBottomOf="@+id/LAN_Button" />
+        app:layout_constraintTop_toBottomOf="@+id/LAN_Button"
+        android:enabled="false"/>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="335dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:contentDescription="logo"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Internet_Button"
+        app:layout_constraintBottom_toTopOf="@+id/skipLauncher"
         app:srcCompat="@drawable/pcremote_logo" />
 
     <ImageView
@@ -89,5 +91,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/tutorial_pcremote" />
+
+    <CheckBox
+        android:id="@+id/skipLauncher"
+        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:buttonTint="@android:color/background_light"
+        android:checked="false"
+        android:text="Skip this screen next time"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
 </FrameLayout>
